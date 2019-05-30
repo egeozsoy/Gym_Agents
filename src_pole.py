@@ -7,6 +7,7 @@ from collections import namedtuple
 from torch.distributions import Categorical
 
 env = gym.make('CartPole-v1')
+env._max_episode_steps = 5000
 env.reset()
 
 
@@ -66,9 +67,9 @@ learning_rate = 0.01
 # Discount Rate
 gamma = 0.99
 # Training Episodes
-episodes = 1001
+episodes = 5001
 # Max Steps per episode
-steps = 1000
+steps = 5000
 state_space = 4
 action_space = env.action_space.n
 
@@ -82,6 +83,8 @@ for episode in range(episodes):
     game_memory = []
     policy_history = None
     for step in range(steps):
+        if episode % 1000 == 0:
+            env.render()
 
         current_state = Variable(torch.FloatTensor([current_state]))
         # let model calculate a policy for the current state
@@ -108,10 +111,13 @@ for episode in range(episodes):
         if done:
             break
 
+    if episode % 1000 == 0:
+        env.close()
+
     # we learn after each game, instead of after each epoch
     learn(game_memory, policy_history)
 
     n_steps[episode] = step
 
     if episode % 50 == 0:
-        print('Mean game steps: {}'.format(n_steps[n_steps.nonzero()].mean()))
+        print('Episode: {}, Mean game steps: {}'.format(episode,n_steps[n_steps.nonzero()].mean()))
