@@ -1,0 +1,2 @@
+- Pytorch Deep Q Learning with Replay memory for openai gym enviroments
+- I used different resources for coming up with solutions and mention them in my code. Not everything in this repo is my idea.
