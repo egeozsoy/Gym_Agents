@@ -16,8 +16,8 @@ env.reset()
 class DQN(nn.Module):
     def __init__(self, state_space, action_space):
         super(DQN, self).__init__()
-        self.linear = nn.Linear(state_space, 128, bias=False)
-        self.linear2 = nn.Linear(128, action_space, bias=False)
+        self.linear = nn.Linear(state_space, 128)
+        self.linear2 = nn.Linear(128, action_space)
         self.dropout = nn.Dropout(p=0.6)
         self.relu = nn.ReLU()
         self.softmax = nn.Softmax(dim=-1)
