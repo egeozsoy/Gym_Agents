@@ -12,8 +12,6 @@ env._max_episode_steps = 2000
 env.reset()
 
 
-# helpful reference https://github.com/ts1829/RL_Agent_Notebooks/blob/master/CartPole/Policy%20Gradient%20with%20Cartpole%20and%20PyTorch%20(Medium%20Version).ipynb
-
 # Deep Q Learning Network that predicts rewards for every action
 class DQN(nn.Module):
     def __init__(self, state_space, action_space):

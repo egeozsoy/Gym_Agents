@@ -1,2 +1,3 @@
-- Pytorch Deep Q Learning with Replay memory for openai gym enviroments
+- Pytorch Deep Q Learning for openai gym enviroments
+- Mostly used reward maximization. Which means the loss is -1 * expected reward. To minimize the loss, pytorch has to maximize the expected reward.
 - I used different resources for coming up with solutions and mention them in my code. Not everything in this repo is my idea.
